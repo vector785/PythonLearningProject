@@ -24,6 +24,7 @@ def check_answer(guess, answer,turns):
         return turns - 1
     else :
         print(f"You got it right, answer is {answer}")
+        return turns
 
 
 def game():
@@ -43,9 +44,10 @@ def game():
         guess = int(input("Make a guess: "))
         turns = check_answer(guess,answer,turns)
 
-        if(turns < 1) : 
+        if(turns == 0) : 
             print("You've run out of guess, you lose.")
-            return
+        elif guess != answer :
+            print("Guess Again. ")    
 
  
 game()
