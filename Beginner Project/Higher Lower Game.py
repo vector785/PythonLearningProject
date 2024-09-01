@@ -319,8 +319,7 @@ def checkAnswer(user_answer,A_follower,B_Follower):
     else :
         return user_answer == "b"
 
-
-
+# Global Variables
 score = 0
 should_game_continue = True
 account_b = random.choice(data)
