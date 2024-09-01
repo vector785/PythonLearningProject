@@ -303,4 +303,59 @@ data = [
 
 import random
 
+# Data from account A and B
+def formatData(account):
+    """ Take the account data and format the data and return it back"""
+    account_name = account["name"]
+    account_desc = account["description"]
+    account_country = account["country"]
+    return f"{account_name} , {account_desc} from {account_country}"
+
+# Check the answer from user
+def checkAnswer(user_answer,A_follower,B_Follower):
+    """Check the user answer by comparing the Account A and B Follower count"""
+    if A_follower > B_Follower :
+        return user_answer == "a"
+    else :
+        return user_answer == "b"
+
+
+
+score = 0
+should_game_continue = True
+account_b = random.choice(data)
+
+
+while should_game_continue :
+    #Generate the account A and B
+    account_a = account_b
+    account_b = random.choice(data)
+
+    if account_a == account_b :
+        account_b = random.choice(data)
+
+    print("Complare A : ",formatData(account_a))
+    print("Vs")
+    print("Compare B : ",formatData(account_b))    
+
+
+    # Ask user who has more follower
+    guess = input("Who has more followers? Type A or B : ").lower()
+   
+    # Getting the account count
+    a_followe_count = account_a["follower_count"]
+    b_followe_count = account_b["follower_count"]
+ 
+    is_correct = checkAnswer(guess,a_followe_count,b_followe_count)
+
+    # Give user a feedback 
+    if(is_correct):
+        score += 1
+        print("You're right, Your score is " ,score)
+    else : 
+        print("You're wrong. Your final score is ",score)
+        should_game_continue = False
+
+
+
 
